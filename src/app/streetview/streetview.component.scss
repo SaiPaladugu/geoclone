@@ -1,0 +1,30 @@
+.streetview {
+    height: 800px;
+    width: 1300px;
+    position: absolute;
+    left: 25px;
+    top: 75px;
+}
+
+.guess {
+    position: relative;
+    left: 1500px;
+}
+
+.loader-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .blur {
+    filter: blur(2px);
+  }
+  
