@@ -13,11 +13,12 @@ export class StreetviewComponent implements AfterViewInit {
   isLoading = false;
 
   ngAfterViewInit() {
+    this.isLoading = true;
     this.streetViewService = new google.maps.StreetViewService();
     this.panorama = new google.maps.StreetViewPanorama(
       this.panoElement.nativeElement,
       {
-        position: {lat: 45.320470, lng: -75.593987},
+        position: {lat: 0, lng: 0},
         pov: {heading: 165, pitch: 0},
         visible: true,
         linksControl: false,
@@ -30,6 +31,7 @@ export class StreetviewComponent implements AfterViewInit {
         addressControl: false,
       }
     );
+    this.findRandomLocation();
   }
 
   changePanoramaLocation() {
