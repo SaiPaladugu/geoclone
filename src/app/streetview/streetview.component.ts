@@ -11,6 +11,7 @@ export class StreetviewComponent implements AfterViewInit {
   panorama!: google.maps.StreetViewPanorama;
   streetViewService!: google.maps.StreetViewService;
   isLoading = false;
+  currCoords:any = null;
 
   ngAfterViewInit() {
     this.isLoading = true;
@@ -47,7 +48,13 @@ export class StreetviewComponent implements AfterViewInit {
     this.streetViewService.getPanorama({location: location, radius: 10000}, (data, status) => {
       if (status === google.maps.StreetViewStatus.OK && data && data.location && data.location.latLng) {
         this.panorama.setPosition(data.location.latLng);
-        this.isLoading = false;
+        if(this.panorama.getStatus() !== 'OK' || this.panorama.getVisible() !== true
+        || this.panorama.getLocation() === undefined || this.panorama.getPosition() === null) {
+          this.findRandomLocation();
+        } else {
+          this.currCoords = location.toJSON();
+          this.isLoading = false;
+        }
       } else {
         this.findRandomLocation();
       }
