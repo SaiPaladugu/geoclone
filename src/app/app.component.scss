@@ -1,3 +1,17 @@
-.title {
+.title, .totalscore {
     text-align: center;
 }
+
+.guess, .next {
+    position: relative;
+    top: 650px;
+    left: 1550px;
+}
+
+.score {
+    position: relative;
+    top: 650px;
+    left: -162px;
+    text-align: right;
+}
+  
