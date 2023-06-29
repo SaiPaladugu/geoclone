@@ -1,4 +1,7 @@
 <h1 class="title">{{ title }} made by Sai Paladugu</h1>
-<button class="next" (click)="nextRound()">next</button>
+<h2 class="totalscore">total score is {{ totalScore }} on round {{ round }}</h2>
+<h2 class="score">current round score is {{ score }}</h2>
+<button (click)="guess()" class="guess">guess</button>
+<button (click)="nextRound()" class="next">next round</button>
 <app-map></app-map>
 <app-streetview></app-streetview>

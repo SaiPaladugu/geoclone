@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-streetview',
@@ -12,9 +12,12 @@ export class StreetviewComponent implements AfterViewInit {
   streetViewService!: google.maps.StreetViewService;
   isLoading = false;
   currCoords:any = null;
+  
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     this.isLoading = true;
+    this.cdr.detectChanges();
     this.streetViewService = new google.maps.StreetViewService();
     this.panorama = new google.maps.StreetViewPanorama(
       this.panoElement.nativeElement,
@@ -40,29 +43,43 @@ export class StreetviewComponent implements AfterViewInit {
     this.findRandomLocation();
   }
 
-  findRandomLocation() {
+  async findRandomLocation() {
     const lat = this.getRandomArbitrary(-90, 90);
     const lng = this.getRandomArbitrary(-180, 180);
     const location = new google.maps.LatLng(lat, lng);
-    
-    this.streetViewService.getPanorama({location: location, radius: 10000}, (data, status) => {
-      if (status === google.maps.StreetViewStatus.OK && data && data.location && data.location.latLng) {
-        this.panorama.setPosition(data.location.latLng);
-        if(this.panorama.getStatus() !== 'OK' || this.panorama.getVisible() !== true
-        || this.panorama.getLocation() === undefined || this.panorama.getPosition() === null) {
-          this.findRandomLocation();
+
+    const panoramaResult = await new Promise<google.maps.StreetViewPanoramaData | null>((resolve, reject) => {
+      this.streetViewService.getPanorama({location: location, radius: 10000}, (data, status) => {
+        if (status === google.maps.StreetViewStatus.OK) {
+          resolve(data);
         } else {
-          this.currCoords = location.toJSON();
-          this.isLoading = false;
+          resolve(null);
         }
-      } else {
-        this.findRandomLocation();
-      }
+      });
     });
-  }  
+
+    if (panoramaResult && panoramaResult.location && panoramaResult.location.latLng) {
+      this.panorama.setPosition(panoramaResult.location.latLng);
+      if(this.panorama.getStatus() !== 'OK' || this.panorama.getVisible() !== true
+      || this.panorama.getLocation() === undefined || this.panorama.getPosition() === null) {
+        // || this.panorama.getLinks()![0]?.description !== ''
+        this.findRandomLocation();
+      } else {
+        // console.log(this.panorama);
+        // console.log(this.panorama.getLocation());
+        // console.log(this.panorama.getLinks());
+        // console.log(this.panorama.getPano());
+        // console.log(this.panorama.getLinks()![0]?.description);
+        this.currCoords = location.toJSON();
+        this.isLoading = false;
+      }
+    } else {
+      this.findRandomLocation();
+    }
+  }
 
   getRandomArbitrary(min: number, max: number) {
     return parseFloat((Math.random() * (max - min) + min).toFixed(6));
   }
   
-} //AIzaSyBpG6-VL79XdX8htvo_5r8jZciABBYRre8
+}
