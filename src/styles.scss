@@ -1,4 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    background-color: #181818;
+    color: #E0E0E0;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    color: #FFFFFF;
+}
+
+button {
+    background-color: #3c3c3c;
+    color: #E0E0E0;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+.guess, .next {
+    margin: 10px;
+}
+
+.title {
+    margin: 10px;
+    font-size: 24px;
+}
+
+.score {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.map {
+    margin: 10px;
+    border: 1px solid #3c3c3c;
+} 
+
+.cover {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.scoreDisplay {
+    color: #4CAF50;
+    font-size: 50px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border: 1px solid #000000;
+}
+
+.progress-bar-fill {
+    height: 30px;
+    background-color: #4CAF50;
+    width: 0%; /* Set the width initially to 0 */
+}
+

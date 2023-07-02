@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class MapComponent {
   center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
   zoom = 1;
+  isMarkerEnabled = true;
 
   userGuess: google.maps.MarkerOptions = {
     draggable: false,
@@ -28,6 +29,9 @@ export class MapComponent {
   currentMarkerPosition?: google.maps.LatLngLiteral;
 
   addMarker(event: any) {
+    if (!this.isMarkerEnabled) {
+      return;
+    }
     this.currentMarkerPosition = event.latLng!.toJSON();
     this.userGuess = {
       position: this.currentMarkerPosition,
@@ -75,6 +79,7 @@ export class MapComponent {
 
     this.polylines = [];
     this.currentMarkerPosition = undefined;
+    this.isMarkerEnabled = true;
   }
 
   distanceCalc(coords: google.maps.LatLngLiteral) {

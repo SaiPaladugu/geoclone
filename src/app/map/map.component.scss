@@ -2,4 +2,9 @@
   position: absolute;
   right: 25px;
   top: 250px;
+  cursor: pointer;
+}
+
+.agm-map-container * {
+  cursor: pointer !important;
 }
