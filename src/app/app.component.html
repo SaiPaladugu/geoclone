@@ -1,7 +1,16 @@
 <h1 class="title">{{ title }} made by Sai Paladugu</h1>
-<h2 class="totalscore">total score is {{ totalScore }} on round {{ round }}</h2>
+<h2 class="totalscore">{{ textScore }} is {{ totalScore }} on round {{ round }}</h2>
 <h2 class="score">current round score is {{ score }}</h2>
-<button (click)="guess()" class="guess">guess</button>
-<button (click)="nextRound()" class="next">next round</button>
+<button (click)="guess()" class="guess" [disabled]="disableGuess">guess</button>
+<button (click)="nextRound()" class="next"> {{ gameStatus }}</button>
 <app-map></app-map>
 <app-streetview></app-streetview>
+<div class="tooltip-container">
+    <span class="tooltip-icon">?</span>
+    <span class="tooltip-text">Note: 
+        <ul><li>Round score goes to 10,000</li>
+        <li>Sometimes you can get a blank round</li>
+        <li>Trekker coordinates can be off sometimes</li></ul>
+        <a href="https://github.com/yourusername/yourproject" target="_blank">Go to GitHub</a></span>
+</div>
+    
