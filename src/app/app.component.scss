@@ -13,6 +13,11 @@
     left: 1450px;
 }
 
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;    
+}
+
 .score {
     position: relative;
     top: 675px;
