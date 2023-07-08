@@ -1,6 +1,5 @@
 <google-map class="map" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
-    <map-marker *ngIf="userGuess.position" [options]="userGuess"></map-marker>
-    <map-marker *ngIf="correctGuess.position" [options]="correctGuess"></map-marker>
+    <map-marker *ngIf="userGuess?.position" [options]="userGuess"></map-marker>
+    <map-marker *ngIf="correctGuess?.position" [options]="correctGuess"></map-marker>
     <map-polyline *ngFor="let polyline of polylines" [options]="polyline"></map-polyline>
 </google-map>
-  

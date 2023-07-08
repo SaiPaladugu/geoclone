@@ -1,4 +1,5 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-streetview',
@@ -8,6 +9,7 @@ import { Component, ElementRef, AfterViewInit, ViewChild, ChangeDetectorRef } fr
 
 export class StreetviewComponent implements AfterViewInit {
   @ViewChild('pano') panoElement!: ElementRef;
+  @Input() appComponent!: AppComponent;
   panorama!: google.maps.StreetViewPanorama;
   streetViewService!: google.maps.StreetViewService;
   isLoading = false;
@@ -16,6 +18,15 @@ export class StreetviewComponent implements AfterViewInit {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
+    this.appComponent.googleMapsApiLoaded.subscribe(loaded => {
+      if (loaded) {
+        this.initializeStreetView();
+      }
+    });
+  }
+
+
+  initializeStreetView() {
     this.isLoading = true;
     this.cdr.detectChanges();
     this.streetViewService = new google.maps.StreetViewService();

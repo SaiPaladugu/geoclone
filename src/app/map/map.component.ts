@@ -1,23 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
 
-export class MapComponent {
-  center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
+export class MapComponent implements OnInit, OnDestroy {
+  center!: google.maps.LatLngLiteral;
   zoom = 1;
   isMarkerEnabled = true;
 
-  userGuess: google.maps.MarkerOptions = {
-    draggable: false,
-    icon: {
-      url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-      scaledSize: new google.maps.Size(40, 40)
-    }
-  };
-
+  userGuess!: google.maps.MarkerOptions;
   correctGuess: google.maps.MarkerOptions = {
     draggable: false,
     icon: {
@@ -27,6 +23,42 @@ export class MapComponent {
   };
   polylines: google.maps.PolylineOptions[] = [];
   currentMarkerPosition?: google.maps.LatLngLiteral;
+
+  private googleMapsApiLoadedSubscription?: Subscription;
+
+  constructor(private appComponent: AppComponent) {}
+
+  ngOnInit(): void {
+    this.googleMapsApiLoadedSubscription = this.appComponent.googleMapsApiLoaded.subscribe(loaded => {
+      if (loaded) {
+        this.initializeMap();
+      }
+    });
+  }
+
+  private initializeMap(): void {
+    this.center = { lat: 0, lng: 0 };
+
+    this.userGuess = {
+      draggable: false,
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+        scaledSize: new google.maps.Size(40, 40)
+      }
+    };
+
+    this.correctGuess = {
+      draggable: false,
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        scaledSize: new google.maps.Size(40, 40)
+      }
+    };
+  }
+
+  ngOnDestroy(): void {
+    this.googleMapsApiLoadedSubscription?.unsubscribe();
+  }
 
   addMarker(event: any) {
     if (!this.isMarkerEnabled) {
