@@ -4,7 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Description
 
-Original game: geoguessr.com
+Try geoclone here -> [https://geoclone.vercel.app](url)
+Original game -> [geoguessr.com](url)
 
 To run locally:
 - clone repo
