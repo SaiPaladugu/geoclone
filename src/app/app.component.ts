@@ -63,6 +63,7 @@ export class AppComponent implements OnInit{
     this.mapComponent.isMarkerEnabled = false;
     if (this.round === 5) {
       this.textScore = 'final score';
+      this.totalScore += this.score;
     }
   }
 
