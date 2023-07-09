@@ -7,18 +7,30 @@
     top: -10px;
 }
 
-.guess, .next {
-    position: relative;
-    top: 650px;
-    left: 1450px;
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 125px;
+    bottom: 100px;
 }
 
-.score {
-    position: relative;
-    top: 675px;
-    left: -150px;
-    text-align: right;
+.score-container {
+    margin-bottom: 0px;
 }
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.guess, .next {
+    z-index: 10;
+}
+
+
 
 .tooltip-container {
     position: absolute;

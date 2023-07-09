@@ -1,9 +1,20 @@
+// .streetview {
+//     height: 800px;
+//     width: 1300px;
+//     position: absolute;
+//     left: 25px;
+//     top: 100px;
+//     z-index: -2;
+//     flex-direction: column;
+// }
+
 .streetview {
-    height: 800px;
-    width: 1300px;
-    position: absolute;
-    left: 25px;
-    top: 100px;
+  position: absolute;
+  left: 2%; /* adjust as needed */
+  top: 10%; /* adjust as needed */
+  width: 70vw; /* 70% of the viewport width */
+  height: 80vh; /* 70% of the viewport height */
+  z-index: -2;
 }
 
 .loader-overlay {

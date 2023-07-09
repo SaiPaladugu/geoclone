@@ -1,8 +1,20 @@
+// .map {
+//   position: absolute;
+//   right: 25px;
+//   top: 250px;
+//   flex-direction: column;
+//   z-index: -1;
+//   cursor: pointer;
+// }
+
 .map {
   position: absolute;
-  right: 25px;
-  top: 250px;
+  right: 2%; 
+  top: 20%; 
+  width: 25vw;
+  height: 25vh;
   cursor: pointer;
+  z-index: -1;
 }
 
 .agm-map-container * {
