@@ -10,6 +10,11 @@ export class MapComponent {
   zoom = 1;
   isMarkerEnabled = true;
 
+  mapOptions: google.maps.MapOptions = {
+    streetViewControl: false,
+    mapTypeControl: false
+  };
+
   userGuess: google.maps.MarkerOptions = {
     draggable: false,
     icon: {

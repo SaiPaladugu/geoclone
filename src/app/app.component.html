@@ -2,15 +2,15 @@
 <h2 class="totalscore">{{ textScore }} is {{ totalScore }} on round {{ round }}</h2>
 <h2 class="score">current round score is {{ score }}</h2>
 <button (click)="guess()" class="guess" [disabled]="disableGuess">guess</button>
-<button (click)="nextRound()" class="next"> {{ gameStatus }}</button>
+<button (click)="nextRound()" class="next" [disabled]="disableNext" #nextButton> {{ gameStatus }}</button>
 <app-map></app-map>
 <app-streetview></app-streetview>
 <div class="tooltip-container">
     <span class="tooltip-icon">?</span>
-    <span class="tooltip-text">Note: 
+    <span class="tooltip-text">
         <ul><li>Round score goes to 10,000</li>
         <li>Sometimes you can get a blank round</li>
-        <li>Trekker coordinates can be off sometimes</li></ul>
-        <a href="https://github.com/yourusername/yourproject" target="_blank">Go to GitHub</a></span>
+        <li>Trekker coordinates can be off sometimes</li>
+        <li><a href="https://github.com/SaiPaladugu/geoclone" target="_blank">Go to GitHub</a></li></ul></span>
 </div>
     
