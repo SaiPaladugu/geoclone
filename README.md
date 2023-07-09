@@ -13,6 +13,7 @@ To run locally:
 - make the contents 'API_KEY=YOUR_API_KEY"
     - get an api key here: https://developers.google.com/maps/documentation/javascript/get-api-key
 - npm i
+- node server.js
 - ng serve
 - localhost:4200
 </pre>
