@@ -19,7 +19,7 @@ export class AppComponent {
   textScore = 'total score'
   score:any = 0;
   totalScore:any = 0;
-  round = 0;
+  round = 1;
   disableGuess = false;
   disableNext = true;
 
@@ -65,7 +65,7 @@ export class AppComponent {
     this.renderer.setStyle(this.nextButton.nativeElement, 'background-color', '#3c3c3c');
     this.document.body.style.backgroundColor = '#181818';
     this.disableGuess = false;
-    this.round = 0;
+    this.round = 1;
     this.totalScore = 0;
     this.score = 0;
     this.mapComponent.clearMap();
