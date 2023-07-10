@@ -65,6 +65,7 @@ export class AppComponent {
     this.renderer.setStyle(this.nextButton.nativeElement, 'background-color', '#3c3c3c');
     this.document.body.style.backgroundColor = '#181818';
     this.disableGuess = false;
+    this.disableNext = true;
     this.round = 1;
     this.totalScore = 0;
     this.score = 0;
