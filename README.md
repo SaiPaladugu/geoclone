@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
 ## Description
-Try mine here -> [Geoclone](https://geoclone.vercel.app) <br>
+Try mine here -> [Geoclone](https://geoclone.vercel.app) (running on the branch 'noserver')<br>
 Original game -> [Geoguessr](https://www.geoguessr.com)
 
 To run locally:
