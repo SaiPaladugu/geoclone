@@ -28,7 +28,7 @@ export class AppComponent {
     @Inject(DOCUMENT) private document: Document) {
       setTimeout(() => {
         this.showTooltip = false;
-    }, 10000); //after 10s i disable the tooltip
+    }, 20000); //after 10s i disable the tooltip
     }
 
   guess() {
