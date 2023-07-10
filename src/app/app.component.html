@@ -1,22 +1,27 @@
-<h1 class="title">{{ title }} made by Sai Paladugu</h1>
-<h2 class="totalscore">{{ textScore }} is {{ totalScore }} on round {{ round }}</h2>
-<div class="button-container">
-    <div class="score-container">
-        <p class="score">&nbsp;current round score is {{ score }}&nbsp;</p>
+<div (keydown.space)="onSpaceBar($event)" tabindex="0">
+    <h1 class="title">{{ title }} made by Sai Paladugu</h1>
+    <h2 class="totalscore">{{ textScore }} is {{ totalScore }} on round {{ round }}</h2>
+    <div class="button-container">
+        <div class="score-container">
+            <p class="score">&nbsp;current round score is {{ score }}&nbsp;</p>
+        </div>
+        <div class="button-group">
+            <button (click)="guess()" class="guess" [disabled]="disableGuess || !mapComponent?.markerPlaced" [class.show-tooltip]="showTooltip">guess</button>
+            <button (click)="nextRound()" class="next" [disabled]="disableNext" #nextButton> {{ gameStatus }}</button>
+        </div>
     </div>
-    <div class="button-group">
-        <button (click)="guess()" class="guess" [disabled]="disableGuess || !mapComponent?.markerPlaced">guess</button>
-        <button (click)="nextRound()" class="next" [disabled]="disableNext" #nextButton> {{ gameStatus }}</button>
+    <app-map></app-map>
+    <app-streetview></app-streetview>
+    <div class="tooltip-container">
+        <span class="tooltip-icon">?</span>
+        <span class="tooltip-text">
+            <ul>
+                <li>You can also press space to guess</li>
+                <li>Round score goes to 10,000</li>
+                <li>Sometimes you can get a blank round</li>
+                <li>Trekker coordinates can be off</li>
+                <li><a href="https://github.com/SaiPaladugu/geoclone" target="_blank">Go to GitHub</a></li>
+            </ul>
+        </span>
     </div>
 </div>
-<app-map></app-map>
-<app-streetview></app-streetview>
-<div class="tooltip-container">
-    <span class="tooltip-icon">?</span>
-    <span class="tooltip-text">
-        <ul><li>Round score goes to 10,000</li>
-        <li>Sometimes you can get a blank round</li>
-        <li>Trekker coordinates can be off sometimes</li>
-        <li><a href="https://github.com/SaiPaladugu/geoclone" target="_blank">Go to GitHub</a></li></ul></span>
-</div>
-    

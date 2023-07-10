@@ -22,9 +22,14 @@ export class AppComponent {
   round = 1;
   disableGuess = false;
   disableNext = true;
+  showTooltip = true;
 
   constructor(private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document) {}
+    @Inject(DOCUMENT) private document: Document) {
+      setTimeout(() => {
+        this.showTooltip = false;
+    }, 10000); //after 10s i disable the tooltip
+    }
 
   guess() {
     this.mapComponent.addGreenMarkerAndLine(this.streetviewComponent.currCoords);
@@ -42,6 +47,13 @@ export class AppComponent {
       this.document.body.style.backgroundColor = '#301934';
     }
   }
+
+  onSpaceBar(event: any) {
+    event.preventDefault();
+    if(!this.disableGuess && this.mapComponent.markerPlaced) {
+      this.guess();
+    }
+}
 
   nextRound() {
     this.disableNext = true;

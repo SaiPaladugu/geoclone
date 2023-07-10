@@ -45,7 +45,29 @@
     z-index: 10;
 }
 
+button.guess {
+    position: relative;
+}
 
+button.guess.show-tooltip::after {
+    content: "You can also press space to guess";
+    position: absolute;
+    width: 100px;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+button.guess.show-tooltip:hover::after {
+    opacity: 1;
+}
 
 .tooltip-container {
     position: absolute;
@@ -73,7 +95,7 @@ button:disabled {
   
 .tooltip-text {
     visibility: hidden;
-    width: 200px;
+    width: 300px;
     background-color: #555;
     color: #fff;
     padding: 10px;
