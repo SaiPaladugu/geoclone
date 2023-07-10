@@ -10,10 +10,10 @@
 
 .streetview {
   position: absolute;
-  left: 2%; /* adjust as needed */
-  top: 10%; /* adjust as needed */
-  width: 70vw; /* 70% of the viewport width */
-  height: 80vh; /* 70% of the viewport height */
+  left: 10%;
+  top: 10%;
+  width: 80vw;
+  height: 80vh;
   z-index: -2;
 }
 

@@ -12,7 +12,8 @@ export class MapComponent {
 
   mapOptions: google.maps.MapOptions = {
     streetViewControl: false,
-    mapTypeControl: false
+    mapTypeControl: false,
+    fullscreenControl: true,
   };
 
   userGuess: google.maps.MarkerOptions = {

@@ -13,13 +13,28 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    right: 125px;
+    left: 50%;
     bottom: 100px;
+    transform: translateX(-50%);
+}
+
+.score {
+    margin: 0;
 }
 
 .score-container {
+    background-color: #3c3c3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
     margin-bottom: 0px;
+    line-height: normal;
+    text-align: center;
 }
+
 
 .button-group {
     display: flex;

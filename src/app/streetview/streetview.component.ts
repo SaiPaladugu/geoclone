@@ -33,6 +33,9 @@ export class StreetviewComponent implements AfterViewInit {
         showRoadLabels: false,
         clickToGo: false,
         addressControl: false,
+        fullscreenControl: false,
+        zoomControl: false,
+        disableDefaultUI: true
       }
     );
     this.findRandomLocation();
