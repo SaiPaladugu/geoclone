@@ -9,6 +9,7 @@ export class MapComponent {
   center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
   zoom = 1;
   isMarkerEnabled = true;
+  markerPlaced = false;
 
   mapOptions: google.maps.MapOptions = {
     streetViewControl: false,
@@ -35,6 +36,7 @@ export class MapComponent {
   currentMarkerPosition?: google.maps.LatLngLiteral;
 
   addMarker(event: any) {
+    this.markerPlaced = true;
     if (!this.isMarkerEnabled) {
       return;
     }
@@ -86,6 +88,7 @@ export class MapComponent {
     this.polylines = [];
     this.currentMarkerPosition = undefined;
     this.isMarkerEnabled = true;
+    this.markerPlaced = false;
   }
 
   distanceCalc(coords: google.maps.LatLngLiteral) {
