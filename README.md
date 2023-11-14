@@ -1,10 +1,10 @@
-## Geoguessr Clone
+# Geoguessr Clone
 
-# Description
+# Access
 Try mine here -> [Geoclone](https://geoclone.vercel.app) <br>
 Original game -> [Geoguessr](https://www.geoguessr.com)
 
-To run locally:
+# Run locally
 <pre>
 - clone repo
 - add a '.env' file in the main directory
