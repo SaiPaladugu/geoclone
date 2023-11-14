@@ -1,4 +1,4 @@
-Geoguessr Clone
+### Geoguessr Clone
 
 ## Description
 Try mine here -> [Geoclone](https://geoclone.vercel.app) <br>
